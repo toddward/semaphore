@@ -3,8 +3,14 @@
   hosts: servers
   become: yes
   tasks:
-    - name: Ensure Servers Are Up To Date
+    - name: Ensure Debian Based Servers Are Up To Date
       apt:
         name: "*"
         state: latest
         update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+    - name: Ensure RPM/Red Hat Based Servers Are Up To Date
+      dnf:
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == "RedHat"
