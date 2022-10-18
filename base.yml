@@ -1,0 +1,10 @@
+---
+- name: Build Base Servers For Kubernetes Install
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Ensure Servers Are Up To Date
+      apt:
+        name: "*"
+        state: latest
+        update_cache: yes
