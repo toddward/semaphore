@@ -1,5 +1,5 @@
 ---
-- name: Update servers accordingly
+- name: Update Servers Accordingly
   hosts: servers
   become: yes
   tasks:
